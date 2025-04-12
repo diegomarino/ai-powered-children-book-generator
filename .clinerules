@@ -1,0 +1,170 @@
+# Project Rules and Patterns
+
+## Communication Rules
+
+- All responses must be in English
+- Every response must start with the 🫡 emoji
+- "umb" means "Update the memory-bank"
+
+## Project Structure
+
+- `/books/` - Main directory for all books
+  - `/[book_name]/` - Individual book directories
+    - `book-state.json` - Book metadata and state
+    - `content.md` - Accepted book content
+    - `/images/` - Generated and accepted images
+
+## State Management
+
+- Chapter/Image Status Types:
+  - `not_generated` - Initial state, no content yet
+  - `generated` - First generation from API, unmodified
+  - `wip` - Being modified/regenerated
+  - `accepted` - Final approved state
+
+## OpenAI Configuration
+
+- No default configurations
+- User must explicitly choose:
+  - Chat model
+  - Image model
+  - Temperature
+  - Image size
+- Configurations stored in `book-state.json`
+
+## File Naming Conventions
+
+- Book directories: lowercase with hyphens
+- Images: `chapter_[number]_[type].png`
+- State files: `book-state.json`
+- Content files: `content.md`
+
+## Development Patterns
+
+- Use `inquirer` for all user interactions
+- Implement one command at a time
+- Test each command thoroughly before moving to the next
+- Keep error handling consistent across all commands
+
+# JavaScript Documentation Rules
+
+## File Header
+
+### Required Sections
+
+- **Functions**: List functions with brief descriptions (`- functionName: description`). Required even if empty.
+- **Constants**: List constants with types (`- CONSTANT_NAME: type - description`). Required even if empty.
+- **Flow**: Numbered execution steps (`1. step description`) covering the main flow.
+- **Error Handling**: List error cases and handling (`- error case: handling`).
+
+### Required Tags
+
+- `@file`
+- `@module`
+- `@requires`
+- `@exports`
+
+## Function Documentation
+
+- Provide a brief and detailed description, including edge cases.
+
+### Required Tags
+
+- `@function`
+- `@param`
+- `@returns`
+- `@throws`
+- `@async` (if applicable)
+- `@example`
+
+### Examples Should Include
+
+- Basic usage
+- Edge cases
+- Expected outputs as comments
+- First-level keys for object parameters
+
+## Class Documentation
+
+### Required Tags
+
+- `@class`
+- `@property`
+- `@augments` (if applicable)
+- `@implements` (if applicable)
+- `@example`
+
+## Variable and Constant Documentation
+
+### Required Tags
+
+- `@constant`
+- `@type`
+
+### Modifiers
+
+- `@readonly` (if applicable)
+- `@private` | `@public` | `@protected` (if applicable)
+
+## Allowed JSDoc Tags
+
+### Primary Tags
+
+- `@file`
+- `@function`
+- `@constant`
+- `@module`
+- `@requires`
+- `@exports`
+- `@example`
+- `@throws`
+- `@returns`
+- `@param`
+- `@type`
+- `@typedef`
+- `@property`
+
+### Modifiers
+
+- `@async`
+- `@augments`
+- `@class`
+- `@private`
+- `@public`
+- `@protected`
+- `@readonly`
+
+### Metadata
+
+- `@todo`
+- `@description`
+
+## Best Practices
+
+### Use Comments For
+
+- Complex logic
+- Algorithms
+- Workarounds
+- Browser-specific issues
+- Regex explanations
+- Public API docs
+- Deprecations
+
+### Avoid Comments For
+
+- Obvious code
+- Commented-out code
+- Version control info
+- Personal notes
+- Redundant information
+
+## Style Guidelines
+
+- **Language**: English only
+- **Indentation**: Consistent
+- **Comments**:
+  - Keep up-to-date
+  - Remove commented-out code
+  - Use appropriate JSDoc tags
+  - Align multi-line comments

@@ -1,0 +1,158 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Image Styles Configuration Schema",
+  "description": "Schema for validating image style configuration and prompt generation",
+  "type": "object",
+  "required": [
+    "DEFAULT_IMAGE_STYLE_PROMPT",
+    "IMAGE_STYLE_PRESETS",
+    "getIllustrationPrompt"
+  ],
+  "properties": {
+    "DEFAULT_IMAGE_STYLE_PROMPT": {
+      "type": "array",
+      "description": "Named default visual styles for illustration prompts",
+      "items": {
+        "type": "object",
+        "required": ["name", "prompt"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Unique identifier for the style",
+            "enum": [
+              "storybook",
+              "ghibli",
+              "clay",
+              "pixelart",
+              "watercolor",
+              "flat-vector",
+              "cutout",
+              "chalkboard"
+            ]
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Base prompt text defining the visual style",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "IMAGE_STYLE_PRESETS": {
+      "type": "object",
+      "description": "Recommended scene composition presets to guide illustration style",
+      "required": [
+        "emotionalCloseUp",
+        "characterIntroduction",
+        "groupInteraction",
+        "parentChildMoment",
+        "wideEstablishingShot",
+        "birdEyeTown",
+        "insideView",
+        "silentSequence",
+        "dynamicAction",
+        "followThrough",
+        "beforeAfter",
+        "diagramConcept",
+        "splitFrameStory",
+        "comparisonScene",
+        "metaphorVisual",
+        "magicalTouch",
+        "nightScene",
+        "celebrationScene",
+        "transitionShot"
+      ],
+      "properties": {
+        "emotionalCloseUp": {
+          "$ref": "#/definitions/preset"
+        },
+        "characterIntroduction": {
+          "$ref": "#/definitions/preset"
+        },
+        "groupInteraction": {
+          "$ref": "#/definitions/preset"
+        },
+        "parentChildMoment": {
+          "$ref": "#/definitions/preset"
+        },
+        "wideEstablishingShot": {
+          "$ref": "#/definitions/preset"
+        },
+        "birdEyeTown": {
+          "$ref": "#/definitions/preset"
+        },
+        "insideView": {
+          "$ref": "#/definitions/preset"
+        },
+        "silentSequence": {
+          "$ref": "#/definitions/preset"
+        },
+        "dynamicAction": {
+          "$ref": "#/definitions/preset"
+        },
+        "followThrough": {
+          "$ref": "#/definitions/preset"
+        },
+        "beforeAfter": {
+          "$ref": "#/definitions/preset"
+        },
+        "diagramConcept": {
+          "$ref": "#/definitions/preset"
+        },
+        "splitFrameStory": {
+          "$ref": "#/definitions/preset"
+        },
+        "comparisonScene": {
+          "$ref": "#/definitions/preset"
+        },
+        "metaphorVisual": {
+          "$ref": "#/definitions/preset"
+        },
+        "magicalTouch": {
+          "$ref": "#/definitions/preset"
+        },
+        "nightScene": {
+          "$ref": "#/definitions/preset"
+        },
+        "celebrationScene": {
+          "$ref": "#/definitions/preset"
+        },
+        "transitionShot": {
+          "$ref": "#/definitions/preset"
+        }
+      },
+      "additionalProperties": false
+    },
+    "getIllustrationPrompt": {
+      "type": "function",
+      "description": "Function to assemble a full prompt using base style, scene preset and description"
+    }
+  },
+  "definitions": {
+    "preset": {
+      "type": "object",
+      "required": ["name", "description", "promptAddon"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Human-readable name of the preset",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the preset's purpose",
+          "minLength": 1
+        },
+        "promptAddon": {
+          "type": "string",
+          "description": "Text to append to the base style prompt",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

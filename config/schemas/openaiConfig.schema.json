@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OpenAI Configuration Schema",
+  "description": "Schema for validating OpenAI configuration constants",
+  "type": "object",
+  "required": ["OPENAI_CHAT_MODELS", "OPENAI_IMAGE_MODELS", "IMAGE_SIZES"],
+  "properties": {
+    "OPENAI_CHAT_MODELS": {
+      "type": "array",
+      "description": "Available OpenAI chat models for text generation",
+      "items": {
+        "type": "object",
+        "required": ["name", "value", "defaults"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Display name of the model with description",
+            "minLength": 1
+          },
+          "value": {
+            "type": "string",
+            "description": "API identifier for the model",
+            "enum": ["gpt-4", "gpt-4-turbo-preview", "gpt-3.5-turbo"]
+          },
+          "defaults": {
+            "type": "object",
+            "description": "Default generation parameters",
+            "required": [
+              "temperature",
+              "top_p",
+              "frequency_penalty",
+              "presence_penalty"
+            ],
+            "properties": {
+              "temperature": {
+                "type": "number",
+                "description": "Controls randomness in the output",
+                "minimum": 0.0,
+                "maximum": 2.0
+              },
+              "top_p": {
+                "type": "number",
+                "description": "Controls nucleus sampling scope",
+                "minimum": 0.0,
+                "maximum": 1.0
+              },
+              "frequency_penalty": {
+                "type": "number",
+                "description": "Discourages word repetition",
+                "minimum": 0.0,
+                "maximum": 2.0
+              },
+              "presence_penalty": {
+                "type": "number",
+                "description": "Encourages topic diversity",
+                "minimum": 0.0,
+                "maximum": 2.0
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "OPENAI_IMAGE_MODELS": {
+      "type": "array",
+      "description": "Available OpenAI image models for illustration generation",
+      "items": {
+        "type": "object",
+        "required": ["name", "value", "defaultSize"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Display name of the model with description",
+            "minLength": 1
+          },
+          "value": {
+            "type": "string",
+            "description": "API identifier for the model",
+            "enum": ["dall-e-3", "dall-e-2"]
+          },
+          "defaultSize": {
+            "type": "string",
+            "description": "Default image size for this model",
+            "enum": [
+              "256x256",
+              "512x512",
+              "1024x1024",
+              "1792x1024",
+              "1024x1792"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "IMAGE_SIZES": {
+      "type": "object",
+      "description": "Available image sizes for each OpenAI image model",
+      "required": ["dall-e-3", "dall-e-2"],
+      "properties": {
+        "dall-e-3": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "value", "aspect"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Display name of the size with description",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "description": "Size dimensions",
+                "enum": ["1024x1024", "1792x1024", "1024x1792"]
+              },
+              "aspect": {
+                "type": "string",
+                "description": "Aspect ratio type",
+                "enum": ["square", "landscape", "portrait"]
+              }
+            },
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "dall-e-2": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "value", "aspect"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Display name of the size with description",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "description": "Size dimensions",
+                "enum": ["256x256", "512x512", "1024x1024"]
+              },
+              "aspect": {
+                "type": "string",
+                "description": "Aspect ratio type",
+                "enum": ["square"]
+              }
+            },
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

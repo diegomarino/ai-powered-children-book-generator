@@ -1,0 +1,42 @@
+{
+  "name": "ai-powered-children-book-generator",
+  "version": "1.0.0",
+  "description": "Interactive CLI for generating and managing educational books for children",
+  "type": "module",
+  "main": "src/cli/index.js",
+  "bin": {
+    "book-cli": "./src/cli/index.js"
+  },
+  "scripts": {
+    "start": "node src/cli/index.js",
+    "link": "npm link",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,json,md}\"",
+    "del:books": "rm -rf books",
+    "del:tmp": "rm -rf tmp",
+    "cp:config": "cp config/storyVariables.EXAMPLE.js config/storyVariables.js && cp config/chapters.EXAMPLE.js config/chapters.js"
+  },
+  "keywords": [
+    "cli",
+    "book-generator",
+    "education",
+    "economics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "axios": "^1.8.4",
+    "chalk": "^5.3.0",
+    "dotenv": "^16.5.0",
+    "inquirer": "^9.2.14",
+    "node-fetch": "^3.3.2",
+    "openai": "^4.93.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1"
+  }
+}

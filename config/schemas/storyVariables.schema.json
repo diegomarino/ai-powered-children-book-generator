@@ -1,0 +1,219 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Story Variables Schema",
+  "description": "Schema for validating the story variables structure",
+  "type": "object",
+  "required": [
+    "characters",
+    "places",
+    "interests",
+    "familyAndEmotions",
+    "circumstantialDetails",
+    "conflictAndLearning",
+    "storySpecificDetails"
+  ],
+  "properties": {
+    "characters": {
+      "type": "object",
+      "required": [
+        "protagonistName",
+        "protagonistAge",
+        "protagonistGender",
+        "friendsNames",
+        "siblingsNamesAges",
+        "petName",
+        "petType"
+      ],
+      "properties": {
+        "protagonistName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "protagonistAge": {
+          "type": "string",
+          "pattern": "^[0-9]+$"
+        },
+        "protagonistGender": {
+          "type": "string",
+          "enum": ["male", "female", "other"]
+        },
+        "friendsNames": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "siblingsNamesAges": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "string",
+                "pattern": "^[0-9]+$"
+              }
+            ]
+          }
+        },
+        "petName": {
+          "type": "string"
+        },
+        "petType": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "places": {
+      "type": "object",
+      "required": [
+        "cityName",
+        "schoolName",
+        "parkName",
+        "homeStreetName",
+        "favoritePlaces"
+      ],
+      "properties": {
+        "cityName": {
+          "type": "string"
+        },
+        "schoolName": {
+          "type": "string"
+        },
+        "parkName": {
+          "type": "string"
+        },
+        "homeStreetName": {
+          "type": "string"
+        },
+        "favoritePlaces": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "interests": {
+      "type": "object",
+      "required": [
+        "favoriteSport",
+        "favoriteActivity",
+        "favoriteToy",
+        "favoriteSuperheroOrCharacter",
+        "favoriteBook"
+      ],
+      "properties": {
+        "favoriteSport": {
+          "type": "string"
+        },
+        "favoriteActivity": {
+          "type": "string"
+        },
+        "favoriteToy": {
+          "type": "string"
+        },
+        "favoriteSuperheroOrCharacter": {
+          "type": "string"
+        },
+        "favoriteBook": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "familyAndEmotions": {
+      "type": "object",
+      "required": [
+        "parentsNames",
+        "favoriteTeacherName",
+        "favoriteFamilyActivity"
+      ],
+      "properties": {
+        "parentsNames": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "favoriteTeacherName": {
+          "type": "string"
+        },
+        "favoriteFamilyActivity": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "circumstantialDetails": {
+      "type": "object",
+      "required": ["season", "specialDay", "favoriteFood", "favoriteClothing"],
+      "properties": {
+        "season": {
+          "type": "string"
+        },
+        "specialDay": {
+          "type": "string"
+        },
+        "favoriteFood": {
+          "type": "string"
+        },
+        "favoriteClothing": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "conflictAndLearning": {
+      "type": "object",
+      "required": ["protagonistFear", "overcomeChallenge", "learnedSkill"],
+      "properties": {
+        "protagonistFear": {
+          "type": "string"
+        },
+        "overcomeChallenge": {
+          "type": "string"
+        },
+        "learnedSkill": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "storySpecificDetails": {
+      "type": "object",
+      "required": [
+        "importantObject",
+        "villainOrAntagonist",
+        "helperOrMentor",
+        "imaginaryOrFantasyPlace"
+      ],
+      "properties": {
+        "importantObject": {
+          "type": "string"
+        },
+        "villainOrAntagonist": {
+          "type": "string"
+        },
+        "helperOrMentor": {
+          "type": "string"
+        },
+        "imaginaryOrFantasyPlace": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
