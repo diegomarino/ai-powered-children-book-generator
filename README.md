@@ -37,7 +37,7 @@ Transform ~~economic~~ education for children through AI-powered storytelling. C
 1. Clone the repository:
 
 ```bash
-git clone [https://www.github.com/diegomarino/ai-powered-children-book-generator]
+git clone https://github.com/diegomarino/ai-powered-children-book-generator
 cd ai-powered-children-book-generator
 ```
 
