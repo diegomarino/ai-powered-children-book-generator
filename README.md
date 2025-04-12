@@ -1,6 +1,6 @@
 # ai-powered-children-book-generator
 
-Transform economic education for children through AI-powered storytelling. Create engaging, personalized books that make complex economic concepts accessible and fun.
+Transform ~~economic~~ education for children through AI-powered storytelling. Create engaging, personalized books that make complex ~~economic~~ concepts accessible and fun.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
